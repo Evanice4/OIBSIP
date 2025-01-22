@@ -39,3 +39,10 @@ function guessNumber() {
             }
         }
     } else {
+        alert("Game over! You ran out of attempts. Do you want to play another round? ");
+        if (confirm("Do you want to play another round?")) {
+            startGame();
+            }
+            }
+        }
+
