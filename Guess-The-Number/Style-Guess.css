@@ -2,8 +2,37 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
+    background-image: url('https://1drv.ms/i/c/0be0d33786be5738/EQOOPF6qXr5Dhc9JWGi2jFUBPvoU7hCVXYPvT8lppGHDfA?e=YetsVU');
+    background-size: cover;
 }
+
+h1 {
+    color: #d6b5b5; /* Change to a contrasting color */
+    margin-bottom: 20px;
+}
+
+p {
+    color: #fff; /* Change to a contrasting color */
+    margin: 10px 0;
+}
+
 button {
     padding: 10px 20px;
     font-size: 16px;
+    background-color: #034b14; /* Green background */
+    color: rgb(231, 220, 220); /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #041809; /* Darker green on hover */
+}
+
+#message, #score {
+    color: #fff; /* Change to a contrasting color */
+    font-weight: bold;
+    margin-top: 20px;
 }
