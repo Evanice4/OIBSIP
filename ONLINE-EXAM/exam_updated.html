@@ -4,63 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General Studies Exam</title>
+    <title>General Studeies Exam</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Online Exam</h1>
-        <div id="timer">Time Left: 180 seconds</div>
-    </div>
-    <div id="question">
-        <p>What is the capital of France?</p>
-        <input type="radio" name="answer1" value="Paris"> Paris<br>
-        <input type="radio" name="answer1" value="London"> London<br>
-        <input type="radio" name="answer1" value="Berlin"> Berlin<br>
-    </div>
-    <div class="navigation">
-        <button id="prevBtn" style="display:none;">Previous</button>
-        <button id="nextBtn">Next</button>
-        <div id="question">
-            <p>What is the name of the president of Rwanda?</p>
-            <input type="radio" name="answer2" value="Paul Kagame"> Paul Kagame<br>
-            <input type="radio" name="answer2" value="John Doe"> John Doe<br>
-            <input type="radio" name="answer2" value="Jane Smith"> Jane Smith<br>
-        </div>
-        <div class="navigation">
-            <button id="prevBtn" style="display:none;">Previous</button>
-            <button id="nextBtn">Next</button>
-            <div id="question">
-                <p>What is the size of Rwanda?</p>
-                <input type="radio" name="answer3" value="26,338 km²"> 26,338 km²<br>
-                <input type="radio" name="answer3" value="30,000 km²"> 30,000 km²<br>
-                <input type="radio" name="answer3" value="20,000 km²"> 20,000 km²<br>
-            </div>
-            <div class="navigation">
-                <button id="prevBtn" style="display:none;">Previous</button>
-                <button id="nextBtn">Next</button>
-                <div id="question">
-                    <p>Who is the president of the United States?</p>
-                    <input type="radio" name="answer4" value="Joe Biden"> Joe Biden<br>
-                    <input type="radio" name="answer4" value="Donald Trump"> Donald Trump<br>
-                    <input type="radio" name="answer4" value="Barack Obama"> Barack Obama<br>
-                </div>
-                <div class="navigation">
-                    <button id="prevBtn" style="display:none;">Previous</button>
-                    <button id="nextBtn">Next</button>
-                    <div id="question">
-                        <p>How many states are there in the United States?</p>
-                        <input type="radio" name="answer5" value="50"> 50<br>
-                        <input type="radio" name="answer5" value="51"> 51<br>
-                        <input type="radio" name="answer5" value="52"> 52<br>
-                    </div>
-                    <button id="submitBtn">Submit Exam</button>
-                </div>
-                <script src="exam.js"></script>
-</body>
-
-</html>ript src="exam.js"></script>
+    <div id="timer">Time Left: 180 seconds</div>
+    <div id="questions">
+        <div class="question">Question 1: What is the capital of France?</div>
+        <div class="question">Question 2: What is 2 + 2?</div>
+        <div class="question">Question 3: What is the color of the sky?</div>
+        <div class="question">Question 4: What is the capital of Rwanda?</div>
+        <div class="question">Question 5: Who is thepresident of the United States of America?</div>
+        <button id="prevButton">Previous</button>
+        <button id="nextButton">Next</button>
+        <button id="submitBtn">Submit</button>
+        <script src="exam.js"></script>
 </body>
 
 </html>

@@ -45,5 +45,27 @@ function submitExam() {
     }
 }
 
+// Function to display the current question
+function displayCurrentQuestion() {
+    questions.forEach((question, index) => {
+        question.style.display = index === currentQuestionIndex ? 'block' : 'none';
+    });
+}
+
 // Show the first question
-questions[currentQuestionIndex].style.display = 'block';
+displayCurrentQuestion();
+
+// Add event listeners for navigation buttons
+document.getElementById('nextButton').addEventListener('click', () => {
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        displayCurrentQuestion();
+    }
+});
+
+document.getElementById('prevButton').addEventListener('click', () => {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        displayCurrentQuestion();
+    }
+});
