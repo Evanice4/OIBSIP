@@ -1,4 +1,4 @@
-let timeLeft = 600; // 10 minutes
+let timeLeft = 180; // 3 minutes
 const timerElement = document.getElementById('timer');
 const submitBtn = document.getElementById('submitBtn');
 const questions = document.querySelectorAll('.question');
