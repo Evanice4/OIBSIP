@@ -1,6 +1,8 @@
 let timeLeft = 600; // 10 minutes
 const timerElement = document.getElementById('timer');
 const submitBtn = document.getElementById('submitBtn');
+const questions = document.querySelectorAll('.question');
+let currentQuestionIndex = 0;
 
 // Timer function
 const timer = setInterval(() => {
@@ -26,10 +28,22 @@ submitBtn.addEventListener('click', submitExam);
 function submitExam() {
     const selectedAnswer = document.querySelector('input[name="answer"]:checked') ? .value;
     if (selectedAnswer) {
-        alert(`Exam submitted! Your answer: ${selectedAnswer}`);
+        alert(`Your answer: ${selectedAnswer}`);
+        // Move to the next question
+        questions[currentQuestionIndex].style.display = 'none';
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions.length) {
+            questions[currentQuestionIndex].style.display = 'block';
+        } else {
+            alert("Exam submitted!");
+            // Redirect to a results page or profile page
+            window.location.href = "profile.html";
+        }
     } else {
         alert("Please select an answer before submitting!");
     }
-    // Redirect to a results page or profile page
-    window.location.href = "profile.html";
 }
+
+// Show the first question
+questions[currentQuestionIndex].style.display = 'block';
