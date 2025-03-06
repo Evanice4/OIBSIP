@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Online Exams - Registration & Login</title>
+    <style>
+        /* Basic reset and styling */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /* Light grey background */
+            padding: 20px;
+        }
+        
+        .back-home {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-home a {
+            text-decoration: none;
+            color: #001f3f;
+            /* Navy blue */
+            font-weight: bold;
+            font-size: 28px;
+        }
+        
+        .container {
+            width: 350px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            border: 1px solid #ccc;
+            /* Grey border */
+        }
+        
+        h2 {
+            text-align: center;
+            color: #001f3f;
+            /* Navy blue */
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #001f3f;
+            /* Navy blue for labels */
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #001f3f;
+            /* Navy blue */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #003366;
+            /* Slightly lighter navy */
+        }
+        
+        .toggle {
+            text-align: center;
+            margin-top: 15px;
+            color: #001f3f;
+            /* Navy blue */
+            cursor: pointer;
+        }
+        
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Optional Back to Homepage link if needed -->
+    <div class="back-home">
+        <a href="oe.html">WISDOM</a>
+    </div>
+
+    <div class="container">
+        <!-- Registration Form (Visible by default) -->
+        <div id="registrationForm">
+            <h2>Register for Online Exams</h2>
+            <form id="regForm">
+                <label for="regName">Name</label>
+                <input type="text" id="regName" required placeholder="Enter your name">
+
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" required placeholder="Enter your email">
+
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" required placeholder="Enter your password">
+
+                <button type="submit">Register</button>
+            </form>
+            <p class="toggle" onclick="showLogin()">Already have an account? Login</p>
+            <p id="regMessage" class="message"></p>
+        </div>
+
+        <!-- Login Form (Hidden by default) -->
+        <div id="loginForm" style="display: none;">
+            <h2>Login to Online Exams</h2>
+            <form id="logForm">
+                <label for="logEmail">Email</label>
+                <input type="email" id="logEmail" required placeholder="Enter your email">
+
+                <label for="logPassword">Password</label>
+                <input type="password" id="logPassword" required placeholder="Enter your password">
+
+                <button type="submit">Login</button>
+            </form>
+            <p class="toggle" onclick="showRegister()">Don't have an account? Register</p>
+            <p id="logMessage" class="message"></p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between Registration and Login forms
+        function showLogin() {
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            clearMessages();
+        }
+
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registrationForm').style.display = 'block';
+            clearMessages();
+        }
+
+        // Clear any messages
+        function clearMessages() {
+            document.getElementById('regMessage').innerText = "";
+            document.getElementById('logMessage').innerText = "";
+        }
+
+        // Registration functionality (demo using localStorage)
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+
+            if (localStorage.getItem(email)) {
+                document.getElementById('regMessage').innerText = 'User already exists!';
+            } else {
+                const user = {
+                    name: name,
+                    email: email,
+                    password: password
+                };
+                localStorage.setItem(email, JSON.stringify(user));
+                document.getElementById('regMessage').style.color = 'green';
+                document.getElementById('regMessage').innerText = 'Registration successful! Please log in.';
+                e.target.reset();
+                setTimeout(showLogin, 1500);
+            }
+        });
+
+        // Login functionality; successful login redirects to oe.html (the homepage)
+        document.getElementById('logForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('logEmail').value;
+            const password = document.getElementById('logPassword').value;
+
+            const storedUser = localStorage.getItem(email);
+            if (storedUser) {
+                const user = JSON.parse(storedUser);
+                if (user.password === password) {
+                    // On successful login, redirect to the homepage (oe.html)
+                    window.location.href = 'oe.html';
+                } else {
+                    document.getElementById('logMessage').innerText = 'Incorrect password!';
+                }
+            } else {
+                document.getElementById('logMessage').innerText = 'User not found! Please register first.';
+            }
+        });
+    </script>
+</body>
+
+</html>
