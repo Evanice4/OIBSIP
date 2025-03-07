@@ -15,8 +15,10 @@
         
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            /* Light grey background */
+            background-color: #001f3f;
+            /* Navy blue background */
+            color: #fdd835;
+            /* Yellow text color for general visibility */
             padding: 20px;
         }
         
@@ -27,8 +29,8 @@
         
         .back-home a {
             text-decoration: none;
-            color: #001f3f;
-            /* Navy blue */
+            color: #fdd835;
+            /* Yellow */
             font-weight: bold;
             font-size: 28px;
         }
@@ -40,14 +42,14 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: 40px auto;
-            border: 1px solid #ccc;
-            /* Grey border */
+            border: 1px solid #fdd835;
+            /* Yellow border */
         }
         
         h2 {
             text-align: center;
-            color: #001f3f;
-            /* Navy blue */
+            color: #fdd835;
+            /* Yellow */
             margin-bottom: 20px;
         }
         
@@ -59,39 +61,43 @@
         label {
             margin: 10px 0 5px;
             font-weight: bold;
-            color: #001f3f;
-            /* Navy blue for labels */
+            color: #fdd835;
+            /* Yellow */
         }
         
         input[type="text"],
         input[type="email"],
         input[type="password"] {
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #fdd835;
+            /* Yellow border for input fields */
             border-radius: 4px;
+            color: #000;
+            /* Black text inside input fields for readability */
         }
         
         button {
             margin-top: 15px;
             padding: 10px;
-            background-color: #001f3f;
-            /* Navy blue */
-            color: #fff;
+            background-color: #fdd835;
+            /* Yellow background for button */
+            color: #001f3f;
+            /* Navy blue text for button */
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         
         button:hover {
-            background-color: #003366;
-            /* Slightly lighter navy */
+            background-color: #b4a01f;
+            /* Darker yellow on hover */
         }
         
         .toggle {
             text-align: center;
             margin-top: 15px;
-            color: #001f3f;
-            /* Navy blue */
+            color: #b4a01f;
+            /* Yellow text */
             cursor: pointer;
         }
         
@@ -106,7 +112,7 @@
 <body>
     <!-- Optional Back to Homepage link if needed -->
     <div class="back-home">
-        <a href="OE.html">WISDOM</a>
+        <a href="newoe.html">WISDOM</a>
     </div>
 
     <div class="container">
@@ -185,11 +191,11 @@
                 document.getElementById('regMessage').style.color = 'green';
                 document.getElementById('regMessage').innerText = 'Registration successful! Please log in.';
                 e.target.reset();
-                setTimeout(showLogin, 1500);
+                setTimeout(showLogin, 1500); // After successful registration, show the login form
             }
         });
 
-        // Login functionality; successful login redirects to OE.html (the homepage)
+        // Login functionality; successful login redirects to dashboard.html
         document.getElementById('logForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('logEmail').value;
@@ -199,8 +205,8 @@
             if (storedUser) {
                 const user = JSON.parse(storedUser);
                 if (user.password === password) {
-                    // On successful login, redirect to the homepage (OE.html)
-                    window.location.href = 'OE.html';
+                    // On successful login, redirect to the dashboard page
+                    window.location.href = 'newoe.html';
                 } else {
                     document.getElementById('logMessage').innerText = 'Incorrect password!';
                 }

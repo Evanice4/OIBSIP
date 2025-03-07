@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WISDOM Online Exams - Mathematics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001f3f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #001f3f;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            background-color: #e0c100;
+        }
+        
+        .exam-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            color: #001f3f;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .question {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        
+        .question input {
+            padding: 10px;
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #001f3f;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background-color: #e0c100;
+        }
+        
+        .timer {
+            margin: 20px 0;
+            font-size: 24px;
+        }
+        
+        .warning {
+            color: red;
+            font-size: 18px;
+        }
+        
+        .instructions {
+            display: block;
+        }
+        
+        .exam {
+            display: none;
+        }
+        
+        .back-btn {
+            background-color: #FFD700;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-top: 20px;
+            display: block;
+            width: max-content;
+            margin: 0 auto;
+        }
+        
+        .back-btn:hover {
+            background-color: #FFD700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Mathematics Exam</h1>
+    <p class="instructions">
+        Read the instructions carefully before starting the exam.<br> We hope your preparations were thorough and that reviewing your notes will contribute to your success. You will have 5 questions, and 1 minute to complete them. Good luck!
+    </p>
+
+    <!-- Ready, Go! Button to Start the Exam -->
+    <button id="startBtn" class="button" onclick="startExam()">Ready, Go!</button>
+
+    <!-- Back to Dashboard Button placed outside the exam section -->
+    <a href="dashboard.html" class="back-btn">Back to Dashboard</a>
+
+    <div id="exam" class="exam-container exam">
+        <div id="timer" class="timer">Time left: 1:00</div>
+        <div id="warning1" class="warning" style="display: none;">1 minute remaining!</div>
+        <div id="warning2" class="warning" style="display: none;">30 seconds remaining!</div>
+
+        <form id="examForm">
+            <div class="question">
+                <label for="q1">1. What is 5 + 3?</label>
+                <input type="text" id="q1" required>
+            </div>
+            <div class="question">
+                <label for="q2">2. What is 12 - 7?</label>
+                <input type="text" id="q2" required>
+            </div>
+            <div class="question">
+                <label for="q3">3. What is 9 x 3?</label>
+                <input type="text" id="q3" required>
+            </div>
+            <div class="question">
+                <label for="q4">4. What is 16 ÷ 4?</label>
+                <input type="text" id="q4" required>
+            </div>
+            <div class="question">
+                <label for="q5">5. What is 18 + 2?</label>
+                <input type="text" id="q5" required>
+            </div>
+            <button type="button" onclick="submitExam()">Submit</button>
+        </form>
+
+        <button id="downloadBtn" style="display: none;" onclick="downloadTranscript()">Download Transcript</button>
+    </div>
+
+    <script>
+        // Exam questions and correct answers
+        const correctAnswers = {
+            q1: '8',
+            q2: '5',
+            q3: '27',
+            q4: '4',
+            q5: '20'
+        };
+
+        let timeLeft = 60; // 1 minute in seconds
+        let timerInterval;
+        let warningSent1 = false; // Warning for 30 seconds
+        let score = 0;
+
+        // Function to start the exam and show the exam content
+        function startExam() {
+            // Hide the instructions and the "Ready, Go!" button
+            document.querySelector('.instructions').style.display = 'none';
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('exam').style.display = 'block';
+            startTimer(); // Start the timer once the exam starts
+        }
+
+        // Timer function
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = `Time left: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+                if (timeLeft === 30 && !warningSent1) {
+                    document.getElementById('warning2').style.display = 'block';
+                    warningSent1 = true;
+                }
+
+                if (timeLeft === 0) {
+                    clearInterval(timerInterval);
+                    submitExam(); // Auto-submit when time runs out
+                }
+            }, 1000);
+        }
+
+        // Function to check answers and calculate score
+        function submitExam() {
+            clearInterval(timerInterval); // Stop the timer
+            const userAnswers = {
+                q1: document.getElementById('q1').value,
+                q2: document.getElementById('q2').value,
+                q3: document.getElementById('q3').value,
+                q4: document.getElementById('q4').value,
+                q5: document.getElementById('q5').value
+            };
+
+            score = 0;
+            for (let question in userAnswers) {
+                if (userAnswers[question] === correctAnswers[question]) {
+                    score++;
+                }
+            }
+
+            // Display results
+            alert(`You scored ${score} out of 5!`);
+            document.getElementById('downloadBtn').style.display = 'block'; // Show download button
+        }
+
+        // Function to download the transcript with correct and incorrect answers
+        function downloadTranscript() {
+            let transcript = `Mathematics Exam Results:\n\n`;
+            let passOrFail = score >= 4 ? "Pass" : "Fail"; // "Pass" if score >= 4, "Fail" otherwise
+            transcript += `You scored ${score} out of 5. ${passOrFail}\n\n`;
+
+            // Loop through each question and compare user answers to correct answers
+            for (let question in correctAnswers) {
+                let userAnswer = document.getElementById(question).value;
+                let result = userAnswer === correctAnswers[question] ? "Correct" : "Incorrect";
+                let correctAnswer = correctAnswers[question];
+                transcript += `${question}: Your answer: ${userAnswer} - ${result}. Correct answer: ${correctAnswer}\n`;
+            }
+
+            const blob = new Blob([transcript], {
+                type: 'text/plain'
+            });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Transcript.txt';
+            link.click();
+        }
+    </script>
+
+</body>
+
+</html>

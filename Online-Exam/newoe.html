@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WISDOM Online Exams</title>
+    <style>
+        /* Global Reset */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001f3f;
+            /* Navy blue */
+            color: #646262;
+            line-height: 1.6;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Navigation Bar */
+        
+        header {
+            background-color: #001f3f;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        /* Dropdown Styling */
+        
+        .dropdown>a::after {
+            content: " ▼";
+            font-size: 12px;
+        }
+        
+        .dropdown ul {
+            display: none;
+            position: absolute;
+            background-color: #001f3f;
+            min-width: 160px;
+            top: 30px;
+            left: 0;
+            z-index: 1000;
+            list-style: none;
+            padding: 0;
+            border-radius: 3px;
+        }
+        
+        .dropdown:hover ul {
+            display: block;
+        }
+        /* Welcome Section */
+        
+        .welcome-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .welcome-container h1 {
+            color: #FFD700;
+        }
+        
+        .welcome-container p {
+            color: white;
+        }
+        
+        .start-btn {
+            display: inline-block;
+            background: #FFD700;
+            color: #001f3f;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        
+        .start-btn:hover {
+            background: #FFA500;
+            color: white;
+        }
+        /* Animation */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <a href="#" class="logo">WISDOM</a>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li class="dropdown">
+                    <a href="#">Select Exam</a>
+                    <ul>
+                        <li><a href="#">Physics</a></li>
+                        <li><a href="#">Mathematics</a></li>
+                        <li><a href="#">Biology</a></li>
+                        <li><a href="#">Kinyarwanda</a></li>
+                        <li><a href="#">Architechure</a></li>
+                        <li><a href="#">Machine Learning</a></li>
+                        <li><a href="#">Others</a></li>
+                    </ul>
+                </li>
+                <li><a href="indexnew.html">Login</a></li>
+                <li><a href="indexnew.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Welcome Section -->
+    <div class="welcome-container">
+        <h1>Welcome to <span>WISDOM Online Exams</span> 🎓</h1>
+        <p>Your gateway to seamless and efficient online assessments.</p>
+        <p>Test your knowledge in <strong>Mathematics, Physics, Chemistry, Biology, Entrepreneurship, and General Studies</strong>.</p>
+        <p>Stay focused, track your progress, and achieve academic excellence.</p>
+        <a href="learn.html" class="start-btn">Get Started</a>
+    </div>
+
+</body>
+
+</html>

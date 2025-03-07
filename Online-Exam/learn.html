@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learn With Us - WISDOM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001f3f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+        }
+        
+        h1 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        
+        .subject-card {
+            background: #f8f8f8;
+            color: #001f3f;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .subject-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .subject-card img {
+            width: 100%;
+            border-radius: 8px;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .subject-card h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        
+        .back-button {
+            padding: 10px 20px;
+            background-color: #FFD700;
+            /* Yellow */
+            color: #001f3f;
+            /* Navy blue */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            align-self: center;
+        }
+        
+        .back-button:hover {
+            background-color: #e0c100;
+            /* Darker yellow on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Choose a Subject to Learn 📚</h1>
+
+    <div class="grid-container">
+        <div class="subject-card" onclick="goToLesson('math')">
+            <img src="images/math.jpg" alt="Mathematics">
+            <h3>Mathematics</h3>
+        </div>
+        <div class="subject-card" onclick="goToLesson('physics')">
+            <img src="images/physics.jpg" alt="Physics">
+            <h3>Physics</h3>
+        </div>
+        <div class="subject-card" onclick="goToLesson('ml')">
+            <img src="images/machine-learning.jpg" alt="Machine Learning">
+            <h3>Machine Learning</h3>
+        </div>
+        <div class="subject-card" onclick="goToLesson('biology')">
+            <img src="images/biology.jpg" alt="Biology">
+            <h3>Biology</h3>
+        </div>
+        <div class="subject-card" onclick="goToLesson('kinyarwanda')">
+            <img src="images/kinyarwanda.jpg" alt="Kinyarwanda">
+            <h3>Kinyarwanda</h3>
+        </div>
+        <div class="subject-card" onclick="goToLesson('architecture')">
+            <img src="images/architecture.jpg" alt="Architecture">
+            <h3>Architecture</h3>
+        </div>
+        <div class="subject-card" onclick="goToLesson('software-engineering')">
+            <img src="images/software.jpg" alt="Software Engineering">
+            <h3>Software Engineering</h3>
+        </div>
+    </div>
+
+    <!-- Back to Dashboard button placed at the bottom -->
+    <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+
+    <script>
+        function goToLesson(subject) {
+            window.location.href = `lesson.html?subject=${subject}`;
+        }
+
+        // Function to navigate back to the dashboard
+        function goBack() {
+            window.location.href = 'newoe.html';
+        }
+    </script>
+
+</body>
+
+</html>
