@@ -189,7 +189,7 @@
             }
         });
 
-        // Login functionality; successful login redirects to oe.html (the homepage)
+        // Login functionality; successful login redirects to OE.html (the homepage)
         document.getElementById('logForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('logEmail').value;
@@ -199,7 +199,7 @@
             if (storedUser) {
                 const user = JSON.parse(storedUser);
                 if (user.password === password) {
-                    // On successful login, redirect to the homepage (oe.html)
+                    // On successful login, redirect to the homepage (OE.html)
                     window.location.href = 'OE.html';
                 } else {
                     document.getElementById('logMessage').innerText = 'Incorrect password!';
